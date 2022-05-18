@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { auditTime, filter, fromEvent, interval, map, merge, switchMap, take } from 'rxjs';
+import { auditTime, filter, fromEvent, interval, map, merge, switchMap, take, tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
       map(tick => tick + 1),
       filter(tick => tick === seconds * this.idleMinutes)
     ).subscribe(() => {
-      alert(`The site was inactive for ${this.idleMinutes} minute ${this.idleMinutes > 1 ? 's' : ''}`)
+      alert(`The site was inactive for ${this.idleMinutes} minute${this.idleMinutes > 1 ? 's' : ''}`)
     });
   }
 }
